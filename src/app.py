@@ -3,7 +3,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from config import DATABASE_URI
 from models import Base
-import route
 from flask import Flask, render_template, request, redirect, url_for, session
 from models import Session, Drink   
 # from kupi import fetch_drinks

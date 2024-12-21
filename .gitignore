@@ -5,9 +5,9 @@ env/
 /include/
 /lib64
 
-/src/fill_db_script.py
 /src/__pycache__/
 
 DrinkData.db
+fill_db_script.py
 pyvenv.cfg
 config.py

@@ -25,12 +25,11 @@ async def update():
 
             if filtered_offers:
                 cheapest = filtered_offers[0].price
+                store = filtered_offers[0].offered_by
                 if cheapest < drink.normal_cost:
                     drink.discount = True
                     drink.discount_cost = cheapest
-
-                print(drink.discount_cost) #test
-
+            #test
             session.commit()
 
     finally:
