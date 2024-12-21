@@ -1,3 +1,10 @@
+'''
+TODO: WRITE OWN PARSER!!!
+The pykupi parser im using does not provide access to drink amount
+eg. 6 bottles -> I am filtering those offers out;
+This file will eventually get a big rewrite
+'''
+
 import asyncio
 from pykupi import KupiParser
 from models import session, Drink, Store, store_drink_association
@@ -12,20 +19,14 @@ async def update():
         raw = await parser.get_prices(drink.Name)
 
         # filter out offers from obscure stores nobody knows
-        filtered_offers = [offer for offer in raw.offers if offer.offered_by in stores]
-
+        filtered_offers = [offer for offer in raw.offers if offer.offered_by.lower() in stores]
+        
         if filtered_offers:
             cheapest = filtered_offers[0]
-            drink.discount_cost = cheapest
+            if cheapest < drink.normal_cost:
+                drink.discount = True
+                drink.discount_cost = cheapest
 
     await parser.session.close()
-'''
-test = await parser.get_prices("coca-cola-zero")
-
-    print(test.high_price, test.low_price)
-    for offer in test.offers:
-        print(offer.offered_by, offer.price)
-'''
-    
 
 asyncio.run(update())
