@@ -12,10 +12,10 @@ async def task():
     )
     '''
 
-    text = await parser.get_prices("coca-cola-zero")
-    mod = text.split(',')
-    
-    print(mod)
+    test = await parser.get_prices("coca-cola-zero")
+
+    # TODO: format
+    print(test.high_price, test.low_price, test)
     await parser.session.close()
 
 asyncio.run(task())

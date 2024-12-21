@@ -21,6 +21,7 @@ class Drink(Base):
     discount_cost = Column(Float, nullable=False)
     image_url = Column(String(200))
     is_zero = Column(Integer, default=False)
+    discount = Column(Integer, default=False)
 
     stores = relationship('Store', secondary=store_drink_association, back_populates='drinks')
 

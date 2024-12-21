@@ -1,6 +1,8 @@
 /bin
 /lib
 /lib64
+/include
+fill_db_script.py
 *.venv
 .env
 pyvenv.cfg
