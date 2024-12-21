@@ -1,11 +1,14 @@
 /bin
 /lib
 /lib64
-/include
+/include/
 fill_db_script.py
-*.venv
-.env
+venv/
+env/
 pyvenv.cfg
 __pycache__/
 *.py[cod]
 *$py.class
+DrinkData.db
+config.py
+# even my gitignore is a mess
