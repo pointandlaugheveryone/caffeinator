@@ -24,7 +24,8 @@ class Drink(Base):
     is_zero = Column(Integer, default=False)
     discount = Column(Integer, default=False)
 
-    store = relationship('Store', back_populates='drinks')
+    store_id = Column(Integer, ForeignKey('Stores.id'))
+    store = relationship('Store')
 
 
 engine = create_engine(DATABASE_URI)

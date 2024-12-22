@@ -7,7 +7,7 @@ This file will (eventually, hopefully) get a big rewrite
 
 import asyncio
 from pykupi import KupiParser
-from models import session, Drink, Store, store_drink_association
+from models import session, Drink, Store
 
 
 async def update():
@@ -26,16 +26,20 @@ async def update():
             filtered_offers = [offer for offer in raw.offers if offer.offered_by.lower() in stores_table]
 
             if filtered_offers:
-                cheapest = filtered_offers[0].price
-                if cheapest < drink.normal_cost:
+                lowest_cost = filtered_offers[0].price
+                if lowest_cost < drink.normal_cost:
                     drink.discount = True
-                    drink.discount_cost = cheapest
+                    drink.discount_cost = lowest_cost
 
                     # store association - all this for a small icon of a store where the discount is
                     display_store_name = filtered_offers[0].offered_by.lower()
                     drink.store = stores_table[display_store_name]
+
+                else:
+                    drink.discount = False
+                    drink.discount_cost = 0
             
-            session.commit()
+        session.commit()
 
     finally:
         await parser.session.close()
