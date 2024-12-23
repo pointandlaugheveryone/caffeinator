@@ -1,11 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from config import DATABASE_URI
-from models import Base
-from flask import Flask, render_template, request, redirect, url_for, session
-from models import Session, Drink   
-from kupi import update
+from flask import Flask, render_template, session
+from models import Session, Drink 
+from kupi import update  
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
@@ -14,12 +13,6 @@ app = Flask(__name__)
 # database connection
 engine = create_engine(DATABASE_URI)
 session = scoped_session(sessionmaker(bind=engine))
-
-# closes db session
-@app.teardown_appcontext
-def remove_session(exception=None):
-    Session.remove()
-
 
 @app.route('/')
 def get_drinks():
