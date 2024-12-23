@@ -14,6 +14,7 @@ app = Flask(__name__)
 engine = create_engine(DATABASE_URI)
 session = scoped_session(sessionmaker(bind=engine))
 
+
 @app.route('/')
 def get_drinks():
     drinks = session.query(Drink).filter_by(discount=True).all()

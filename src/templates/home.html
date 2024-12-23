@@ -6,7 +6,7 @@
     <div class="col">
         <div class="card h-100 shadow-sm">
             {% if drink.image_url %}
-            <img src="{{ drink.image_url }}" 
+            <img src="{{ url_for('static', filename=drink.image_url) }}" 
                  class="card-img-top p-2" 
                  alt="{{ drink.name }}"
                  style="object-fit: contain; height: 200px;">
@@ -19,10 +19,10 @@
                         <span class="text-decoration-line-through text-muted">{{ drink.normal_cost }} Kč</span>
                         <span class="text-danger fw-bold ms-2">{{ drink.discount_cost }} Kč</span>
                     </p>
-                    {% if drink.store %}
+                    {% if drink.store and drink.store.logo_url %}
                     <div class="mt-2">
-                        <img src="{{ drink.store.logo_url }}" 
-                             alt="{{ drink.store.name }}" 
+                        <img src="{{ url_for('static', filename=drink.store.logo_url) }}" 
+                             alt="{{ drink.store.display_name }}" 
                              style="height: 25px; object-fit: contain;">
                     </div>
                     {% endif %}
