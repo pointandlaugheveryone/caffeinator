@@ -1,1 +1,0 @@
-DATABASE_URI = 'postgresql://roni:helloroni@localhost:5432/DrinkData'
