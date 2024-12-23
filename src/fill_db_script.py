@@ -1,0 +1,46 @@
+from config import DATABASE_URI
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from models import Base, Store, Drink
+import os
+
+engine = create_engine(DATABASE_URI)
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+albert = Store(name='albert', logo_url='src/static/images/albert.svg')
+billa = Store(name='billa', logo_url='src/static/images/billa.svg')
+globus = Store(name='globus', logo_url='src/static/images/globus.svg')
+kaufland = Store(name='kaufland', logo_url='src/static/images/kaufland.svg')
+lidl = Store(name='lidl', logo_url='src/static/images/lidl.svg')
+norma = Store(name='norma', logo_url='src/static/images/norma.svg')
+penny = Store(name='penny', logo_url='src/static/images/penny.svg')
+tesco = Store(name='tesco', logo_url='src/static/images/tesco.svg')
+session.add_all([albert, billa, globus, kaufland, lidl, norma, penny, tesco])
+
+cola = Drink(name='limonada-coca-cola', normal_cost=50.4, discount_cost=0, image_url='src/static/images/drinks/cola.jpg', is_zero=False)
+cola_zero = Drink(name='limonada-coca-cola-zero', normal_cost=50.4, discount_cost=0, image_url='src/static/images/drinks/cola_zero.jpg', is_zero=True)
+pepsi = Drink(name='limonada-pepsi', normal_cost=46.3, discount_cost=0, image_url='src/static/images/drinks/pepsi.jpg', is_zero=False)
+pepsi_max = Drink(name='limonada-bez-kalorii-max-pepsi', normal_cost=46.3, discount_cost=0, image_url='src/static/images/drinks/pepsi_max.jpg', is_zero=True)
+kofola = Drink(name='kofola', normal_cost=40.4, discount_cost=0, image_url='src/static/images/drinks/kofola.jpg', is_zero=False)
+kofola_sf = Drink(name='kofola-bez-cukru', normal_cost=40.4, discount_cost=0, image_url='src/static/images/drinks/kofola_sf.jpg', is_zero=True)
+eiskaffee = Drink(name='ledova-kava-hochwald', normal_cost=32.3, discount_cost=0, image_url='src/static/images/drinks/eiskaffee.jpg', is_zero=False)
+eiskaffee_light = Drink(name='ledova-kava-light-hochwald', normal_cost=32.3, discount_cost=0, image_url='src/static/images/drinks/eiskaffee_light.jpg', is_zero=True)
+monster = Drink(name='energeticky-napoj-monster-energy', normal_cost=43.5, discount_cost=0, image_url='src/static/images/drinks/monster.jpg', is_zero=False)
+monster_zero = Drink(name='energeticky-napoj-monster-energy-zero', normal_cost=43.5, discount_cost=0, image_url='src/static/images/drinks/monster_zero.jpg', is_zero=True)
+redbull = Drink(name='energeticky-napoj-red-bull', normal_cost=38.6, discount_cost=0, image_url='src/static/images/drinks/redbull.jpg', is_zero=False)
+redbull_zero = Drink(name='energeticky-napoj-zero-red-bull', normal_cost=38.6, discount_cost=0, image_url='src/static/images/drinks/redbull_zero.jpg', is_zero=True)
+redbull_sf = Drink(name='energeticky-napoj-sugarfree-red-bull', normal_cost=38.6, discount_cost=0, image_url='src/static/images/drinks/redbull_sf.jpg', is_zero=True)
+royalcrown = Drink(name='cola-royal-crown', normal_cost=40.1, discount_cost=0, image_url='src/static/images/drinks/royalcrown.jpg', is_zero=False)
+royalcrown_sf = Drink(name='cola-no-sugar-royal-crown', normal_cost=40.1, discount_cost=0, image_url='src/static/images/drinks/royalcrown_sf.jpg', is_zero=True)
+mrbrown = Drink(name='ledova-kava-mr-brown', normal_cost=63, discount_cost=0, image_url='src/static/images/drinks/mrbrown.jpg', is_zero=False)
+bigshock = Drink(name='energeticky-napoj-big-shock', normal_cost=42, discount_cost=0, image_url='src/static/images/drinks/bigshock.jpg', is_zero=False)
+bigshock_coffee = Drink(name='ledova-kava-coffee-big-shock', normal_cost=50, discount_cost=0, image_url='src/static/images/drinks/bigshock_coffee.jpg', is_zero=False)
+tiger = Drink(name='energeticky-napoj-tiger', normal_cost=33, discount_cost=0, image_url='src/static/images/drinks/tiger.jpg', is_zero=False)
+rockstar = Drink(name='energeticky-napoj-rockstar', normal_cost=38.2, discount_cost=0, image_url='src/static/images/drinks/rockstar.jpg', is_zero=False)
+semtex = Drink(name='energeticky-napoj-semtex', normal_cost=33.8, discount_cost=0, image_url='src/static/images/drinks/semtex.jpg', is_zero=False)
+mntn_dew = Drink(name='limonada-mountain-dew', normal_cost=47.5, discount_cost=0, image_url='src/static/images/drinks/mntn_dew.jpg', is_zero=False)
+session.add_all([cola, cola_zero, pepsi, pepsi_max, kofola, kofola_sf, eiskaffee, eiskaffee_light, monster, monster_zero, redbull, redbull_sf, redbull_zero, royalcrown, royalcrown_sf, mrbrown, bigshock, bigshock_coffee, tiger, rockstar, semtex, mntn_dew])
+session.commit()
+session.close()

@@ -6,7 +6,7 @@ from config import DATABASE_URI
 Base = declarative_base()
 
 class Store(Base):
-    __tablename__ = 'Stores'
+    __tablename__ = 'stores'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(500), nullable=False, unique=True)
@@ -14,7 +14,7 @@ class Store(Base):
 
 
 class Drink(Base):
-    __tablename__ = 'Drinks'
+    __tablename__ = 'drinks'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(500), nullable=False, unique=True)
@@ -24,7 +24,7 @@ class Drink(Base):
     is_zero = Column(Integer, default=False)
     discount = Column(Integer, default=False)
 
-    store_id = Column(Integer, ForeignKey('Stores.id'))
+    store_id = Column(Integer, ForeignKey('stores.id'))
     store = relationship('Store')
 
 
