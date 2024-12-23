@@ -15,5 +15,5 @@ env/
 dist/
 build/
 *.tmp
-src/config.py
+config.py
 pyvenv.cfg
