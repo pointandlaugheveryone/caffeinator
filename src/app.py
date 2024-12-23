@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from config import DATABASE_URI
 from flask import Flask, render_template, session
-from models import Session, Drink 
+from models import Drink
 from kupi import update  
 from apscheduler.schedulers.background import BackgroundScheduler
 
@@ -18,16 +18,16 @@ session = scoped_session(sessionmaker(bind=engine))
 @app.route('/')
 def get_drinks():
     drinks = session.query(Drink).filter_by(discount=True).all()
-    return render_template('home.html', drinks=drinks)
+    return render_template('home.html', drinks=drinks, dark_mode=False)
 
 @app.route('/zero')
 def get_zero_drinks():
     zero_drinks = session.query(Drink).filter_by(is_zero=True, discount=True).all()
-    return render_template('zero.html', drinks=zero_drinks)
+    return render_template('zero.html', drinks=zero_drinks, dark_mode=True)
 
 @app.route('/about')
 def about_page():
-    return render_template('about.html')
+    return render_template('about.html', dark_mode=False)
 
 
 # fetch prices daily
