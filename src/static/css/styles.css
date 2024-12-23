@@ -32,3 +32,33 @@
 body, .navbar, .card, .btn-dark, a.nav-link, .card-title, .card-text {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.footer-link {
+    text-decoration: none;
+    color:#b1b1b1
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.dark-mode .footer-link {
+    color: #555555;
+}
+
+.footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.dark-mode .footer .text-muted{
+    color: #555555;
+}
+
+.lead {
+    white-space: pre-line;
+  }
+
+.link {
+    color:#121212;
+}

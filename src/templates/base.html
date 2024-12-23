@@ -14,7 +14,7 @@
           <div class="mx-auto" style="position: relative; z-index: 1;">
             <ul class="navbar-nav d-flex justify-content-center">
               <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/about">About</a>
@@ -22,8 +22,8 @@
             </ul>
           </div>
       
-          <button id="zeroModeToggle" class="btn btn-dark position-absolute"
-                  style="right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; background-color: black;"
+          <button id="zeroModeToggle" class="btn btn-dark position-absolute fw-bold"
+                  style="right: 10px; top: 50%; transform: translateY(-50%); z-index: 2; background-color: black; color:#ffffffd4"
                   >
             ☢ Zero Mode ☢
           </button>
@@ -34,6 +34,15 @@
         {% block content %}{% endblock %}
       </div>
       
+      <footer class="footer-dark py-4 bg-auto">
+        <div class="container d-flex justify-content-center">
+            <span class="text-muted text-center">
+                <a href="https://github.com/pointandlaugheveryone/" class="footer-link">Roni, 2024.</a>
+            </span>
+        </div>
+    </footer>
+
+
       <script>
         document.getElementById('zeroModeToggle').addEventListener('click', function() {
             if (window.location.pathname === '/zero') {
