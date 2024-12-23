@@ -31,7 +31,7 @@ async def update():
                     drink.discount = True
                     drink.discount_cost = lowest_cost
 
-                    # store association - all this for a small icon of a store where the discount is
+                    # store association - to get store where the discount is
                     display_store_name = filtered_offers[0].offered_by.lower()
                     drink.store = stores_table[display_store_name]
 

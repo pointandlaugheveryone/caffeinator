@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table, create_engine
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Table, create_engine, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from config import DATABASE_URI
@@ -21,8 +21,8 @@ class Drink(Base):
     normal_cost = Column(Float, nullable=False)
     discount_cost = Column(Float, nullable=False)
     image_url = Column(String(200))
-    is_zero = Column(Integer, default=False)
-    discount = Column(Integer, default=False)
+    is_zero = Column(Boolean, default=False)
+    discount = Column(Boolean, default=False)
 
     store_id = Column(Integer, ForeignKey('stores.id'))
     store = relationship('Store')
