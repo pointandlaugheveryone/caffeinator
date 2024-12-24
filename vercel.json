@@ -1,19 +1,21 @@
 {
   "version": 2,
-  "builds": [
+  "functions": {
+    "api/kupi_update.py": {}
+  },
+  "routes": [
     {
-      "src": "app.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "api/kupi_update.py",
-      "use": "@vercel/python",
-      "config": {
-        "schedule": "0 0 * * *"
-      }
+      "src": "/(.*)",
+      "dest": "/api/app.py"
     }
   ],
   "env": {
     "DATABASE_URI": "@DATABASE_URI"
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/kupi_update",
+      "schedule": "0 0 * * *"
+    }
+  ]
 }
