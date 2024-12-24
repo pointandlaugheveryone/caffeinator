@@ -7,15 +7,12 @@
     },
     {
       "src": "api/kupi_update.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "schedule": "0 0 * * *"
+      }
     }
   ],
-  "functions": {
-    "api/kupi_update.py": {
-      "runtime": "python3.9",
-      "schedule": "0 0 * * *"
-    }
-  },
   "env": {
     "DATABASE_URI": "@DATABASE_URI"
   }
