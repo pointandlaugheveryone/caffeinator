@@ -19,7 +19,6 @@ propcache==0.2.1
 psycopg2-binary==2.9.10
 pydantic==2.10.4
 pydantic_core==2.27.2
-pykupi @ git+https://github.com/prostmich/pykupi.git@6570d9ba6bf29457a06907ff44eeb1ffc3615e36
 soupsieve==2.6
 SQLAlchemy==2.0.36
 typing_extensions==4.12.2
