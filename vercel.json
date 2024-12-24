@@ -1,7 +1,10 @@
 {
   "version": 2,
   "functions": {
-    "api/kupi_update.py": {}
+    "api/kupi_update.py": {
+      "runtime": "python3.9",
+      "memory": 1024
+    }
   },
   "routes": [
     {
@@ -9,7 +12,6 @@
       "dest": "/api/app.py"
     }
   ],
-  
   "crons": [
     {
       "path": "/api/kupi_update",
