@@ -5,12 +5,12 @@ __pycache__/
 lib/
 lib64/
 
-venv/
-.venv/
+# venv/
+# .venv/
 
 .webassets-cache
 target/
 
+
 .vscode/
-config.py
 .vercel
