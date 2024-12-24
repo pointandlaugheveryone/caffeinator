@@ -9,9 +9,7 @@
       "dest": "/api/app.py"
     }
   ],
-  "env": {
-    "DATABASE_URI": "@DATABASE_URI"
-  },
+  
   "crons": [
     {
       "path": "/api/kupi_update",
