@@ -1,16 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/*.py",
-      "use": "@vercel/python"
-    }
-  ],
   "functions": {
     "api/kupi_update.py": {
       "runtime": "python3.9",
-      "memory": 1024,
-      "maxDuration": 10
+      "memory": 1024
     }
   },
   "routes": [
