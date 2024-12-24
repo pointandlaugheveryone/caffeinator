@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from config import DATABASE_URI
 from flask import Flask, render_template, session
 from models import Drink
-from kupi import update  
+from kupi import update_prices  
 from apscheduler.schedulers.background import BackgroundScheduler
 
 
@@ -32,7 +32,7 @@ def about_page():
 
 # fetch prices daily
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=update, trigger='interval', days=1)
+scheduler.add_job(func=update_prices, trigger='interval', days=1)
 scheduler.start()
 
 if __name__ == "__main__":
